@@ -17,16 +17,16 @@ app.get('/comments.json', function(req, res) {
   });
 });
 
-// app.post('/comments.json', function(req, res) {
-//   fs.readFile('comments.json', function(err, data) {
-//     var comments = JSON.parse(data);
-//     comments.push(req.body);
-//     fs.writeFile('comments.json', JSON.stringify(comments, null, 4), function(err) {
-//       res.setHeader('Cache-Control', 'no-cache');
-//       res.json(comments);
-//     });
-//   });
-// });
+app.post('/comments.json', function(req, res) {
+  fs.readFile('comments.json', function(err, data) {
+    var comments = JSON.parse(data);
+    comments.push(req.body);
+    fs.writeFile('comments.json', JSON.stringify(comments, null, 4), function(err) {
+      res.setHeader('Cache-Control', 'no-cache');
+      res.json(comments);
+    });
+  });
+});
 
 
 app.listen(app.get('port'), function() {
