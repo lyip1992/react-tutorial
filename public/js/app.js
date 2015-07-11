@@ -54,4 +54,4 @@ var Comment = React.createClass({
   }
 });
 
-React.render(<CommentBox data={data}/>, document.getElementById('content'));
+React.render(<CommentBox url="comments.json"/>, document.getElementById('content'));
