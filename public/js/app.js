@@ -6,4 +6,11 @@ var CommentBox = React.createClass({
   }
 });
 
+var CommentList = React.createClass({
+  render: function(){
+    return (
+      <div className="commentList">Hello World, I am a Comment List.</div>
+    );
+  }
+});
 React.render(<CommentBox />, document.getElementById('content'));
