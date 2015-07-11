@@ -13,6 +13,10 @@ var CommentBox = React.createClass({
     });
   },
 
+  handleCommentSubmit: function(comment){
+    // submit to server and refresh the list
+  },
+
   getInitialState: function(){
     return { data: [] };
   },
@@ -27,7 +31,7 @@ var CommentBox = React.createClass({
       <div className="commentBox">
         <h1>Comments</h1>
         <CommentList data={ this.state.data } />
-        <CommentForm />
+        <CommentForm onCommentSubmit={ this.handleCommentSubmit }/>
       </div>
     );
   }
@@ -56,7 +60,7 @@ var CommentForm = React.createClass({
     var author = React.findDOMNode(this.refs.author).value.trim();
     var text = React.findDOMNode(this.refs.text).value.trum();
     if( !text || !author ){ return; }
-    // TODO: Send request to the server
+    this.props.onCommentSubmit({ author: author, text: text });
     React.findDOMNode(this.refs.author).value = '';
     React.findDOMNode(this.refs.text).value = '';
     return;
