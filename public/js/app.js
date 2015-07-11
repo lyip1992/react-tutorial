@@ -14,7 +14,17 @@ var CommentBox = React.createClass({
   },
 
   handleCommentSubmit: function(comment){
-    // submit to server and refresh the list
+    $.ajax({
+      url: this.props.url,
+      dataType: 'json',
+      data: comment,
+      success: function(data){
+        this.setState({ data: data });
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
   },
 
   getInitialState: function(){
